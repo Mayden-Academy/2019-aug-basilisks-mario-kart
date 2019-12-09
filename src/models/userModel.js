@@ -30,4 +30,14 @@ app.post('/api/task', jsonParser, (req, res) => {
     })
 });
 
+app.get('/api/users', jsonParser, (req, res) => {
+    DBConnection( (db) => {
+        let collection = db.collection('users');
+        let result = getAllUsers (db, (documentsReturned) => {
+            console.log('Here is a list of the users');
+            res.json(req.body)
+        })
+    })
+});
+
 app.listen(port, () => console.log(`App listening on port ${port}!`));
