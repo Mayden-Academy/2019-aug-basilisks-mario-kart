@@ -8,8 +8,17 @@ charcterArray = ['Baby Mario', 'Baby Peach', 'Toad',
     'Mii', 'Rosalina', 'Toadette'
 ];
 
-function validateUserData (req) {
+function htmlEntities(str) {
+    return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
 
-    if (charcterArray.includes(req.body.favRacer)){
+
+function validateUserData (req) {
+    let name = htmlEntities(req.body.name);
+    let favRacer = htmlEntities(req.body.favRacer);
+    let cohort = htmlEntities(req.body.cohort);
+
+
+    if (charcterArray.includes(favRacer)){
     }
 }
