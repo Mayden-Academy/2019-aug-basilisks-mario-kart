@@ -6,4 +6,12 @@ addUser = (db, newUser, callback ) => {
     });
 };
 
+var getUsers = function (db, callback) {
+    var collection = db.collection('mario-kart-users');
+    collection.find().toArray(function (err, documents) {
+        callback(documents)
+    })
+};
+
+
 module.exports.addUser = addUser;
