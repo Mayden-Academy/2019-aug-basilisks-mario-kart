@@ -17,3 +17,15 @@ let DBConnection = (callback) => {
 let app = express();
 app.use(express.static('pubic'));
 let jsonParser = bodyParser.json();
+
+app.post('/api/task', jsonParser, (req, res) => {
+    DBConnection( (db) => {
+        const collection = db.collection('users');
+        collection.insertOne({name : req.body.name, favRacer : req.body.favRacer, cohort : req.body.cohort}, (err, r) => {
+            if (err)
+                throw err;
+            console.log('Creating new user');
+            res.json(req.body)
+        })
+    })
+});
