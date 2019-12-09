@@ -1,18 +1,9 @@
+addUser = (db, newUser, callback ) => {
+    db.collection('mario-kart-users').insertOne(newUser, (err, r) => {
+        if (err)
+            throw err;
+        callback(r);
+    });
+};
 
-
-const collection = db.collection('users');
-
-function addUser(db, ) {
-        db((db) => {
-            collection.insertOne(, (err, r) => {
-                if (err)
-                    throw err;
-                console.log('Creating new user');
-                res.json(req.body)
-            })
-        })
-    })
-}
-
-
-module.exports = UserService;
+module.exports.addUser = addUser;

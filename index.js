@@ -1,5 +1,5 @@
 const express = require('express');
-const router = require('src/Routes/routes');
+const routes = require('../2019-aug-basilisks-mario-kart/src/Routes/routes');
 
 const app = express();
 const port = 3000;
@@ -11,7 +11,7 @@ app.use(function(req, res, next) {
     next();
 });
 
-router(app);
+routes(app);
 
 
 app.listen(port, () => console.log('Mario Kart Running'));
