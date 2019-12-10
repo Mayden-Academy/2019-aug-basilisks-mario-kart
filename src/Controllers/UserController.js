@@ -29,8 +29,7 @@ function getAllUsers (req,res) {
 }
 
 function getUserById (req,res) {
-    let id = req.params.id;
-    id = ObjectId(id);
+    let id = ObjectId(req.params.id);
     DbService.connectToDB((db) => {
         UserService.getUserById (db, id, (documents) => {
             console.log('Here is a specific user');
