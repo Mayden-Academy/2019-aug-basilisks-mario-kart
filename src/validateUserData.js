@@ -19,7 +19,7 @@ function validateUserData (req) {
     if (charcterArray.includes(character)){
         return {name: usersName,
         favRacer: character,
-        Cohort: userCohort}
+        cohort: userCohort}
     }
 }
 
