@@ -7,8 +7,12 @@ function routes (app) {
         res.send('Creating new user');
     })
 
-    app.get('/api/allusers', jsonParser, UserController.getAllUsers,function (req, res) {
+    app.get('/api/user', jsonParser, UserController.getAllUsers,function (req, res) {
         res.send('Here are all the users')
+    })
+
+    app.get('/api/user/:id', jsonParser, UserController.getAllUsers,function (req, res) {
+        res.send('Here is a specific user')
     })
 }
 
