@@ -1,5 +1,6 @@
 const UserService = require('../Services/UserService');
 const DbService = require('../Services/DbService');
+const ObjectId = require('mongodb').ObjectId;
 
 function addUser (req, res) {
     let newUser = {
@@ -28,14 +29,14 @@ function getAllUsers (req,res) {
 }
 
 function getUserById (req,res) {
-    DbService.connectToDB(((db) => {
-            UserService.getUserById (id, (db) => {
-                console.log('Here is a specific user');
-                res.json(id)
-            })
+    let id = req.params.id;
+    DbService.connectToDB((db) => {
+        UserService.getUserById (db, id, (documents) => {
+            console.log('Here is a specific user');
+            res.json(documents)
         })
-    )}
-
+    })
+}
 
 
 module.exports.addUser = addUser;

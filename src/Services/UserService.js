@@ -6,18 +6,20 @@ addUser = (db, newUser, callback ) => {
     });
 };
 
-getUsers = function (db, callback) {
-    db.collection('mario-kart-users').find().toArray(function (err, documents) {
+getUsers =  (db, callback) => {
+    db.collection('mario-kart-users').find().toArray( (err, documents) => {
         if (err)
             throw err;
         callback(documents)
     })
 };
 
-var getUserById = function (id, db, callback) {
-    var collection = db.collection('mario-kart-users');
-    collection.find({"_id": id }).toArray(function (id, err, documents) {
-        callback(documents)
+getUserById =  (db, id, callback) => {
+    db.collection("mario-kart-users").findOne({"_id": id}, (err, documents) => {
+        if (err)
+            throw err;
+        callback(documents);
+        console.log(documents)
     })
 };
 
