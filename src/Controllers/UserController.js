@@ -1,15 +1,21 @@
 const UserService = require('../Services/UserService');
 const DbService = require('../Services/DbService');
-const validateUserData = require ('../validateUserData');
+const validation = require ('../validation');
+
+
 
 function addUser (req, res) {
-    let newUser = validateUserData(req);
+    let newUser = validation.validateUserData(req);
     DbService.connectToDB(((db) => {
-        UserService.addUser(db, newUser, (result) => {
-            if (result.insertedCount ===  1) {
+        UserService.addUser(db, newUser, result => {
+            if (result.insertedCount === 1) {
                 res.json({success: true, msg: 'Added new user to db.', data: newUser})
             } else {
-                res.json({success: false, msg: 'User not added to db.', data: newUser})
+                res.json({
+                    success: false,
+                    msg: 'User not added to db. Ensure name and cohort contains only letters, character is valid',
+                    data: newUser
+                })
             }
         })
     }))
