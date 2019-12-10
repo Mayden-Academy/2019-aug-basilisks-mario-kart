@@ -8,12 +8,13 @@ function addUser (req, res) {
     let newUser = validation.validateUserData(req);
     DbService.connectToDB(((db) => {
         UserService.addUser(db, newUser, (result) => {
+            console.log(result.insertedCount);
             if (result.insertedCount === 1) {
                 res.json({success: true, msg: 'Added new user to db.', data: newUser})
             } else {
                 res.json({
                     success: false,
-                    msg: 'User not added to db. Ensure name and cohort contains only letters, character is valid',
+                    msg: 'User not added to db. Ensure name and cohort contains only letters and spaces. Favourite character should have a capital first letter.',
                     data: newUser
                 })
             }
