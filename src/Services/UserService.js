@@ -8,6 +8,8 @@ addUser = (db, newUser, callback ) => {
 
 getUsers = function (db, callback) {
     db.collection('mario-kart-users').find().toArray(function (err, documents) {
+        if (err)
+            throw err;
         callback(documents)
     })
 };
