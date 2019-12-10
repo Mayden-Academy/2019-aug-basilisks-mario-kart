@@ -6,10 +6,10 @@ function addUser (req, res) {
     let newUser = validateUserData(req);
     DbService.connectToDB(((db) => {
         UserService.addUser(db, newUser, (result) => {
-            if (result.insertedCount ===1) {
-                res.json({success: true, msg: 'added new user to db', data: newUser})
+            if (result.insertedCount ===  1) {
+                res.json({success: true, msg: 'Added new user to db.', data: newUser})
             } else {
-                res.json({success: false, msg: 'User not added to db', data: newUser})
+                res.json({success: false, msg: 'User not added to db.', data: newUser})
             }
         })
     }))

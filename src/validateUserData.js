@@ -9,7 +9,7 @@ charcterArray = ['Baby Mario', 'Baby Peach', 'Toad',
 ];
 
 function htmlEntities(str) {
-    return String(str).replace(/&/g, '').replace(/</g, '').replace(/>/g, '').replace(/"/g, '').replace(/[0-9]/gm, '' );
+    return String(str).replace(/[^a-zA-Z ]/g, '');
 }
 
 function validateUserData (req) {
@@ -19,7 +19,7 @@ function validateUserData (req) {
     if (charcterArray.includes(character)){
         return {name: usersName,
         favRacer: character,
-        Cohort: userCohort}
+        cohort: userCohort}
     }
 }
 
