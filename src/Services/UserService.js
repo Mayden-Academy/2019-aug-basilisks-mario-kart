@@ -1,4 +1,4 @@
-addUser = (db, newUser, callback ) => {
+addUser = (db, newUser, callback) => {
     db.collection('mario-kart-users').insertOne(newUser, (err, r) => {
         if (err)
             throw err;
@@ -6,15 +6,15 @@ addUser = (db, newUser, callback ) => {
     });
 };
 
-getUsers =  (db, callback) => {
-    db.collection('mario-kart-users').find().toArray( (err, documents) => {
+getUsers = (db, callback) => {
+    db.collection('mario-kart-users').find().toArray((err, documents) => {
         if (err)
             throw err;
         callback(documents)
     })
 };
 
-getUserById =  (db, id, callback) => {
+getUserById = (db, id, callback) => {
     db.collection("mario-kart-users").findOne({"_id": id}, (err, documents) => {
         if (err)
             throw err;

@@ -1,8 +1,8 @@
 const bodyParser = require('body-parser');
 let jsonParser = bodyParser.json();
-const UserController = require ('../Controllers/UserController');
+const UserController = require('../Controllers/UserController');
 
-function routes (app) {
+function routes(app) {
     app.post('/api/user', jsonParser, UserController.addUser, (req, res) => {
         res.send('Creating new user');
     });
