@@ -18,15 +18,17 @@ function addUser (req, res) {
     }))
 }
 
-app.get('/api/users', jsonParser, (req, res) => {
-    DBConnection( (db) => {
-        let collection = db.collection('users');
-        let result = getAllUsers (db, (documentsReturned) => {
+
+function getAllUsers (req,res) {
+    DbService.connectToDB(((db) => {
+        UserService.getUsers (db, (documents) => {
             console.log('Here is a list of the users');
-            res.json(req.body)
+            res.json(documents)
         })
     })
-});
+    )}
+
 
 
 module.exports.addUser = addUser;
+module.exports.getAllUsers = getAllUsers;
