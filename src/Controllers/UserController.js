@@ -20,13 +20,12 @@ function addUser (req, res) {
 
 
 function getAllUsers (req,res) {
-    DbService.connectToDB(((db) => {
+    DbService.connectToDB((db) => {
         UserService.getUsers (db, (documents) => {
-            console.log('Here is a list of the users');
             res.json(documents)
         })
     })
-    )}
+}
 
 
 
