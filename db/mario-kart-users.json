@@ -1,0 +1,6 @@
+{"_id":{"$oid":"5dee34f8daaafe68b10de9f6"},"name":"Luke","favRacer":"diddyKong","cohort":"geckos"}
+{"_id":{"$oid":"5dee354fdaaafe68b10de9f7"},"name":"Marc","favRacer":"yoshi","cohort":"geckos"}
+{"_id":{"$oid":"5dee3574daaafe68b10de9f8"},"name":"Cosmin","favRacer":"waluigi","cohort":"geckos"}
+{"_id":{"$oid":"5dee359edaaafe68b10de9f9"},"name":"Calum","favRacer":"babyMario","cohort":"geckos"}
+{"_id":{"$oid":"5dee35c8daaafe68b10de9fa"},"name":"Harry","favRacer":"bowser","cohort":"cobras"}
+""
