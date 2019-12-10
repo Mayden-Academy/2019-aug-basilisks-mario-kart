@@ -15,3 +15,4 @@ var getUsers = function (db, callback) {
 
 
 module.exports.addUser = addUser;
+module.exports.getUsers = getUsers;
