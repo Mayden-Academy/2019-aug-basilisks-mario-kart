@@ -1,4 +1,3 @@
-
 charcterArray = ['Baby Mario', 'Baby Peach', 'Toad',
     'Koopa Troopa', 'Mario', 'Luigi', 'Peach',
     'Yoshi', 'Wario', 'Waluigi', 'Donkey Kong',
@@ -12,14 +11,16 @@ function htmlEntities(str) {
     return String(str).replace(/[^a-zA-Z ]/g, '');
 }
 
-function validateUserData (req) {
+function validateUserData(req) {
     let usersName = htmlEntities(req.body.name);
     let character = htmlEntities(req.body.favRacer);
     let userCohort = htmlEntities(req.body.cohort);
-    if (charcterArray.includes(character)){
-        return {name: usersName,
-        favRacer: character,
-        cohort: userCohort}
+    if (charcterArray.includes(character)) {
+        return {
+            name: usersName,
+            favRacer: character,
+            cohort: userCohort
+        }
     }
 }
 
