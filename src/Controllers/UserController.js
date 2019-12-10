@@ -7,8 +7,7 @@ const validation = require ('../validation');
 function addUser (req, res) {
     let newUser = validation.validateUserData(req);
     DbService.connectToDB(((db) => {
-        UserService.addUser(db, newUser, (result) => {
-            console.log(result.insertedCount);
+        UserService.addUser(db, newUser, ( result) => {
             if (result.insertedCount === 1) {
                 res.json({success: true, msg: 'Added new user to db.', data: newUser})
             } else {
