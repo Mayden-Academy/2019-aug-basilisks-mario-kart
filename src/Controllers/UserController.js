@@ -28,7 +28,17 @@ function getAllUsers (req,res) {
     })
     )}
 
+function getUserById (req,res) {
+    DbService.connectToDB(((db) => {
+            UserService.getUserById (id, (db) => {
+                console.log('Here is a specific user');
+                res.json(id)
+            })
+        })
+    )}
+
 
 
 module.exports.addUser = addUser;
 module.exports.getAllUsers = getAllUsers;
+module.exports.getUserById = getUserById;
