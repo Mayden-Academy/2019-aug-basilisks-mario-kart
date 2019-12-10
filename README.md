@@ -10,12 +10,6 @@ Ensure you have node.js installed
 $ npm install node
 ```
 
-If you do not have it already, install nodemon
-
-```bash
-$ npm install -g nodemon
-```
-
 Then run
 ```
 $ node index.js
