@@ -2,6 +2,12 @@ const bodyParser = require('body-parser');
 let jsonParser = bodyParser.json();
 const UserController = require('../Controllers/UserController');
 
+/**
+ * Uses post and get with API url routes to interact with db
+ *
+ * @param app Express application
+ *
+ */
 function routes(app) {
     app.post('/api/user', jsonParser, UserController.addUser, (req, res) => {
         res.send('Creating new user');
