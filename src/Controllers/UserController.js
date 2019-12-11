@@ -21,13 +21,4 @@ function addUser (req, res) {
     }))
 }
 
-function getTrackResults(req, res) {
-    DbService.connectToDB(((db) => {
-        UserService.getTrackResults(db, function (documents) {
-            res.json(results)
-        })
-    })
-}
-
 module.exports.addUser = addUser;
-module.exports.getTrackResults = getTrackResults;
