@@ -40,7 +40,25 @@ function getUserById(req, res) {
     })
 }
 
+function addTrack (req, res) {
+    let trackResult = validation.validateTracksData(req);
+    DbService.connectToDB(((db) => {
+        UserService.addTrack(db, trackResult, ( result) => {
+            if (result.insertedCount === 1) {
+                res.json({success: true, msg: 'Added new race results.', data: trackResult})
 
+            } else {
+                res.json({
+                    success: false,
+                    msg: 'Track results not added to db. Ensure track name,user name and position contains only letters and spaces. Track name should have a capital first letter and position needs to be between 1-12.',
+                    data: trackResult
+                })
+            }
+        })
+    }))
+}
+
+module.exports.addTrack = addTrack;
 module.exports.addUser = addUser;
 module.exports.getAllUsers = getAllUsers;
 module.exports.getUserById = getUserById;

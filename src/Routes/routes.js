@@ -14,6 +14,9 @@ function routes(app) {
     app.get('/api/user/:id', jsonParser, UserController.getUserById, (req, res) => {
         res.send('Here is a specific user')
     })
+    app.post('/api/track', jsonParser, UserController.addTrack, (req, res) => {
+        res.send('Creating new user');
+    });
 }
 
 module.exports = routes;

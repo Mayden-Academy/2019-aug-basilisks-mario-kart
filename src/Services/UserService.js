@@ -5,6 +5,13 @@ addUser = (db, newUser, callback ) => {
     });
 };
 
+addTrack = (db, trackResults, callback ) => {
+    db.collection('mario-kart-tracks').insertOne(trackResults, (result) => {
+        callback(result);
+
+    });
+};
+
 getUsers = (db, callback) => {
     db.collection('mario-kart-users').find().toArray((err, documents) => {
         if (err)
@@ -23,5 +30,6 @@ getUserById = (db, id, callback) => {
 };
 
 module.exports.addUser = addUser;
+module.exports.addTrack = addTrack;
 module.exports.getUsers = getUsers;
 module.exports.getUserById = getUserById;
