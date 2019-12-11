@@ -1,3 +1,4 @@
+
 /**
  * Adds a new user to the db collection 'mario-kart-users'
  *
@@ -8,8 +9,10 @@
  * @param callback function
  *
  */
-addUser = (db, newUser, callback ) => {
-    db.collection('mario-kart-users').insertOne(newUser, (result) => {
+addUser = (db, newUser, callback) => {
+    db.collection('mario-kart-users').insertOne(newUser, (err, result) => {
+        if (err)
+            throw err;
         callback(result);
     });
 };
@@ -45,7 +48,6 @@ getUserById = (db, id, callback) => {
         if (err)
             throw err;
         callback(documents);
-        console.log(documents)
     })
 };
 

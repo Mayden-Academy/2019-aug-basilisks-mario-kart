@@ -1,7 +1,7 @@
 const UserService = require('../Services/UserService');
 const DbService = require('../Services/DbService');
 const ObjectId = require('mongodb').ObjectId;
-const validation = require ('../validation');
+const validation = require('../validation');
 
 /**
  * Uses HTTP request and response to add a new user to the db and returns with json success or failure messages
@@ -24,11 +24,11 @@ function addUser (req, res) {
                     success: false,
                     msg: 'User not added to db. Ensure name and cohort contains only letters and spaces. Favourite character should have a capital first letter.',
                     data: newUser
-                })
-            }
+
         })
-    }))
+    }
 }
+
 
 /**
  * Uses HTTP request and response to get all users from the db
