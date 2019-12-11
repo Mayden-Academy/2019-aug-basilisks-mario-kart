@@ -67,7 +67,8 @@ function validateUserData(req) {
         return {
             name: usersName,
             favRacer: character,
-            cohort: userCohort
+            cohort: userCohort,
+            results: {}
         }
     }
 }
