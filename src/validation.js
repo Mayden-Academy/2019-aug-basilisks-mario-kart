@@ -1,4 +1,3 @@
-
 characterArray = ['Baby Mario', 'Baby Peach', 'Toad',
     'Koopa Troopa', 'Mario', 'Luigi', 'Peach',
     'Yoshi', 'Wario', 'Waluigi', 'Donkey Kong',
@@ -17,7 +16,7 @@ trackArray = ['Luigi Circuit', 'Moo Moo Meadows', 'Mushroom Gorge', 'Toad\'s Fac
     'DS Desert Hills', 'GBA Bowser Castle 3', 'N64 DK\'s Jungle Parkway', 'GCN Mario Circuit',
     'SNES Mario Circuit 3', 'DS Peach Gardens', 'GCN DK Mountain', 'N64 Bowser\'s Castle']
 
-positionArray=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+positionArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 
 
 /**
@@ -34,7 +33,7 @@ function htmlEntities(str) {
 }
 
 
-function validateTracksData (req) {
+function validateTracksData(req) {
     let track = htmlEntities(req.body.trackName);
     let usersName = htmlEntities(req.body.name);
     let position = htmlEntities(req.body.finishPosition);
@@ -59,15 +58,17 @@ function validateTracksData (req) {
  *
  */
 
-function validateUserData (req) {
+function validateUserData(req) {
 
     let usersName = htmlEntities(req.body.name);
     let character = htmlEntities(req.body.favRacer);
     let userCohort = htmlEntities(req.body.cohort);
-    if (characterArray.includes(character)){
-        return {name: usersName,
-        favRacer: character,
-        cohort: userCohort}
+    if (characterArray.includes(character)) {
+        return {
+            name: usersName,
+            favRacer: character,
+            cohort: userCohort
+        }
     }
 }
 
