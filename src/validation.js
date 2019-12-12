@@ -8,13 +8,13 @@ characterArray = ['Baby Mario', 'Baby Peach', 'Toad',
 ];
 
 
-trackArray = ['luigiCircuit', 'Moo Moo Meadows', 'Mushroom Gorge', 'Toad\'s Factory',
-    'Mario Circuit', 'Coconut Mall', 'DK Pass', 'Wario\'s Gold Mine', 'Daisy Circuit',
-    'Koopa Cape', 'Maple Treeway', 'Grumble Volcano', 'Dry Dry Ruins', 'Moonview Highway',
-    'Bowser\'s Castle', 'Rainbow Road', 'GCN Peach Beach', 'DS Yoshi Falls', 'SNES Ghost Valley 2',
-    'N64 Mario Raceway', 'N64 Sherbet Land', 'GBA Shy Guy Beacht', 'DS Delfino Square', 'GCN Waluigi Stadium',
-    'DS Desert Hills', 'GBA Bowser Castle 3', 'N64 DK\'s Jungle Parkway', 'GCN Mario Circuit',
-    'SNES Mario Circuit 3', 'DS Peach Gardens', 'GCN DK Mountain', 'N64 Bowser\'s Castle']
+trackArray = ['luigiCircuit', 'mooMooMeadows', 'mushroomGorge', 'toadsFactory',
+    'marioCircuit', 'coconutMall', 'dkPass', 'wariosGoldMine', 'daisyCircuit',
+    'koopaCape', 'mapleTreeway', 'grumbleVolcano', 'dryDryRuins', 'moonviewHighway',
+    'bowsersCastle', 'rainbowRoad', 'peachBeach', 'yoshiFalls', 'ghostValley2',
+    'marioRaceway', 'sherbetLand', 'shyGuyBeach', 'delfinoSquare', 'waluigiStadium',
+    'desertHills', 'bowserCastle3', 'dksJungleParkway', 'marioCircuit',
+    'marioCircuit3', 'peachGardens', 'dkMountain', 'bowsersCastle'];
 
 positionArray = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]
 
@@ -32,9 +32,21 @@ function htmlEntities(str) {
     return String(str).replace(/[^a-zA-Z ]/g, '');
 }
 
+/**
+ * Takes a string and removes any character that is not a letter or number
+ *
+ * @param str string of characters
+ *
+ * @return string string with only numbers and lowercase and uppercase letters
+ *
+ */
+function htmlEntitiesNum(str) {
+    return String(str).replace(/[^a-zA-Z0-9 ]/g, '');
+}
+
 
 function validateTracksData(req) {
-    let track = htmlEntities(req.body.trackName);
+    let track = htmlEntitiesNum(req.body.trackName);
     let position = req.body.finishPosition;
     if (trackArray.includes(track) && positionArray.includes(position)) {
         return {
