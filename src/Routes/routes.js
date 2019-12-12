@@ -1,15 +1,30 @@
 const bodyParser = require('body-parser');
 let jsonParser = bodyParser.json();
-const  UserController = require ('../Controllers/UserController');
 const  TrackController = require ('../Controllers/TrackController');
+const UserController = require('../Controllers/UserController');
 
-function routes (app) {
-    app.post('/api/user', jsonParser, UserController.addUser, function (req, res) {
+/**
+ * Uses post and get with API url routes to interact with db
+ *
+ * @param app Express application
+ *
+ */
+function routes(app) {
+    app.post('/api/user', jsonParser, UserController.addUser, (req, res) => {
         res.send('Creating new user');
     });
 
-    app.get('/api/track/:name', TrackController.getTrackResults)
+    app.get('/api/track/:name', jsonParser, TrackController.getTrackResults, (req, res) => {
+        res.send('Here are the track results');
+    });
 
+    app.get('/api/user', jsonParser, UserController.getAllUsers, (req, res) => {
+        res.send('Here are all the users')
+    });
+
+    app.get('/api/user/:id', jsonParser, UserController.getUserById, (req, res) => {
+        res.send('Here is a specific user')
+    })
 }
 
 module.exports = routes;
