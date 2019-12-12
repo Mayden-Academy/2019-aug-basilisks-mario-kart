@@ -1,5 +1,6 @@
 const bodyParser = require('body-parser');
 let jsonParser = bodyParser.json();
+const  TrackController = require ('../Controllers/TrackController');
 const UserController = require('../Controllers/UserController');
 
 /**
@@ -19,7 +20,11 @@ function routes(app) {
 
     app.get('/api/user/:id', jsonParser, UserController.getUserById, (req, res) => {
         res.send('Here is a specific user')
-    })
+    });
+
+    app.get('/api/track/:track', jsonParser, TrackController.getTrackResults, (req, res) => {
+        res.send('Here are the track results');
+    });
 }
 
 module.exports = routes;

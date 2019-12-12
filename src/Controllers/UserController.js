@@ -1,7 +1,7 @@
 const UserService = require('../Services/UserService');
 const DbService = require('../Services/DbService');
 const ObjectId = require('mongodb').ObjectId;
-const validation = require('../validation');
+const validation = require ('../Services/ValidationService');
 
 /**
  * Uses HTTP request and response to add a new user to the db and returns with json success or failure messages
@@ -74,7 +74,6 @@ function getUserById(req, res) {
         })
     })
 }
-
 
 module.exports.addUser = addUser;
 module.exports.getAllUsers = getAllUsers;
