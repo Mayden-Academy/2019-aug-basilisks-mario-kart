@@ -1,10 +1,10 @@
-charcterArray = ['Baby Mario', 'Baby Peach', 'Toad',
-    'Koopa Troopa', 'Mario', 'Luigi', 'Peach',
-    'Yoshi', 'Wario', 'Waluigi', 'Donkey Kong',
-    'Bowser', 'Baby Daisy', 'Baby Luigi', 'Birdo',
-    'Bowser Junior', 'Daisy', 'Diddy Kong', 'Dry Bones',
-    'Dry Bowser', 'Funky King', 'King Boo',
-    'Mii', 'Rosalina', 'Toadette'
+charcterArray = ['babyMario', 'babyPeach', 'toad',
+    'koopaTroopa', 'mario', 'luigi', 'peach',
+    'yoshi', 'wario', 'waluigi', 'donkeyKong',
+    'bowser', 'babyDaisy', 'babyLuigi', 'birdo',
+    'bowserJunior', 'daisy', 'diddyKong', 'dryBones',
+    'dryBowser', 'funkyKing', 'kingBoo',
+    'mii', 'rosalina', 'toadette'
 ];
 
 trackArray = ['luigiCircuit', 'mooMooMeadows', 'mushroomGorge', 'toadsFactory',
