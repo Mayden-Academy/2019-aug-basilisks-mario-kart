@@ -8,7 +8,7 @@ characterArray = ['Baby Mario', 'Baby Peach', 'Toad',
 ];
 
 
-trackArray = ['Luigi Circuit', 'Moo Moo Meadows', 'Mushroom Gorge', 'Toad\'s Factory',
+trackArray = ['luigiCircuit', 'Moo Moo Meadows', 'Mushroom Gorge', 'Toad\'s Factory',
     'Mario Circuit', 'Coconut Mall', 'DK Pass', 'Wario\'s Gold Mine', 'Daisy Circuit',
     'Koopa Cape', 'Maple Treeway', 'Grumble Volcano', 'Dry Dry Ruins', 'Moonview Highway',
     'Bowser\'s Castle', 'Rainbow Road', 'GCN Peach Beach', 'DS Yoshi Falls', 'SNES Ghost Valley 2',
@@ -16,7 +16,7 @@ trackArray = ['Luigi Circuit', 'Moo Moo Meadows', 'Mushroom Gorge', 'Toad\'s Fac
     'DS Desert Hills', 'GBA Bowser Castle 3', 'N64 DK\'s Jungle Parkway', 'GCN Mario Circuit',
     'SNES Mario Circuit 3', 'DS Peach Gardens', 'GCN DK Mountain', 'N64 Bowser\'s Castle']
 
-positionArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+positionArray = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]
 
 
 /**
@@ -35,15 +35,11 @@ function htmlEntities(str) {
 
 function validateTracksData(req) {
     let track = htmlEntities(req.body.trackName);
-    let usersName = htmlEntities(req.body.name);
-    let position = htmlEntities(req.body.finishPosition);
+    let position = req.body.finishPosition;
     if (trackArray.includes(track) && positionArray.includes(position)) {
         return {
-            trackName: track, results: [
-                {
-                    name: usersName,
-                    finishPosition: position
-                }]
+            trackName: track,
+            finishPosition: position
         }
     }
 }

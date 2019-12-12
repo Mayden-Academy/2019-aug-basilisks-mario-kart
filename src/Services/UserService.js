@@ -18,11 +18,23 @@ addUser = (db, newUser, callback) => {
 };
 
 
-addTrack = (db, trackResults, callback ) => {
-    db.collection('mario-kart-tracks').insertOne(trackResults, (result) => {
-        callback(result);
+addRaceResult = (db, name, trackResults, callback ) => {
+    db.collection('mario-kart-users').find({"name": name}).toArray((err, docs) => {
+        if (docs.length == 1) {
+            let user = docs[0]
+            user.tracks[trackResults.trackName].push(trackResults.finishPosition)
+            db.collection('mario-kart-users').updateOne({"name": name}, {$set: user}, (err ,result) => {
+                if (err)
+                    throw err;
+                callback(result);
 
-    });
+            });
+
+
+        }
+    })
+
+
 };
 
 /**
@@ -60,6 +72,6 @@ getUserById = (db, id, callback) => {
 };
 
 module.exports.addUser = addUser;
-module.exports.addTrack = addTrack;
+module.exports.addRaceResult = addRaceResult;
 module.exports.getUsers = getUsers;
 module.exports.getUserById = getUserById;
