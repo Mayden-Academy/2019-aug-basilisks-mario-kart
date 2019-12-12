@@ -26,12 +26,11 @@ function routes(app) {
         res.send('Creating a race result');
     });
 
-
     app.get('/api/track/:track', jsonParser, TrackController.getTrackResults, (req, res) => {
         res.send('Here are the track results');
     });
 
-    app.get('/api/results/:user', jsonParser, UserController.getUserResults, (req, res) => {
+    app.get('/api/result/:user', jsonParser, UserController.getUserResults, (req, res) => {
         res.send(`Here are the results for user: ${res.params.userName}`).end()
     });
 }
