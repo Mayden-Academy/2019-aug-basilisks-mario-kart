@@ -75,6 +75,15 @@ function getUserById(req, res) {
     })
 }
 
+function getUserResults(req, res) {
+    let name = req.params.name;
+    DbService.connectToDB((db) => {
+        UserService.getUserResults(db, name, (document) => {
+            res.json(document)
+        })
+    })
+}
+
 module.exports.addUser = addUser;
 module.exports.getAllUsers = getAllUsers;
 module.exports.getUserById = getUserById;
