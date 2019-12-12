@@ -18,7 +18,6 @@ function addUser(req, res) {
     if (newUser) {
         DbService.connectToDB(((db) => {
             UserService.addUser(db, newUser, (result) => {
-                console.log(result);
                 if (result.insertedCount) {
                     res.json({
                         success: true,
@@ -77,24 +76,19 @@ function getUserById(req, res) {
 
 function addRaceResult(req, res) {
     let name = req.params.name;
-    console.log(req.body)
     let trackResult = validation.validateTracksData(req);
-    console.log(trackResult);
     if (trackResult) {
         DbService.connectToDB(((db) => {
             UserService.addRaceResult(db, name, trackResult, (result) => {
-                if(result){
-                    console.log(result.modifiedCount)
+                if (result) {
                     if (result.modifiedCount === 1) {
                         res.json({success: true, msg: 'Added new race results.', data: trackResult})
                     }
                 } else {
                     res.json({success: false, msg: 'result missing', data: result})
-
                 }
             })
         }))
-
     } else {
         res.json({
             success: false,

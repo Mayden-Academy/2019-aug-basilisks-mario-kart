@@ -16,7 +16,7 @@ trackArray = ['luigiCircuit', 'mooMooMeadows', 'mushroomGorge', 'toadsFactory',
     'desertHills', 'bowserCastle3', 'dksJungleParkway', 'marioCircuit',
     'marioCircuit3', 'peachGardens', 'dkMountain', 'bowsersCastle'];
 
-positionArray = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]
+positionArray = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];
 
 
 /**
