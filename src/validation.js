@@ -27,6 +27,14 @@ function htmlEntities(str) {
     return String(str).replace(/[^a-zA-Z ]/g, '');
 }
 
+/**
+ * Takes a string and removes any character that is not a letter or number
+ *
+ * @param str string of characters
+ *
+ * @return string string with only numbers and lowercase and uppercase letters
+ *
+ */
 function htmlEntitiesNum(str) {
     return String(str).replace(/[^a-zA-Z0-9 ]/g, '');
 }
@@ -53,6 +61,14 @@ function validateUserData (req) {
     }
 }
 
+/**
+ * Validates and sanitises track name. Returns track name
+ *
+ * @param track
+ *
+ * @return validated track name
+ *
+ */
 validateTrack = (track) => {
     track = htmlEntitiesNum(track);
     if (trackArray.includes(track)){

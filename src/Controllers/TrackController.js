@@ -3,7 +3,16 @@ const DbService = require('../Services/DbService');
 const validation = require('../validation');
 const averageFinishPositionService = require('../Services/AverageFinishPositionService');
 
-
+/**
+ * Uses HTTP request and response to get mode results for a specific track returns with json success or failure messages
+ *
+ * @param req HTTP request
+ *
+ * @param res HTTP response
+ *
+ * @return json response with requested track data or error message
+ *
+ */
 function getTrackResults(req, res) {
     let trackName = req.params.track;
     trackName = validation.validateTrack(trackName);

@@ -11,6 +11,14 @@ function averageFinishPosition(results, trackName) {
 return trackResults;
 }
 
+/**
+ * Takes an array of numbers and returns the mode or modes if multiple.
+ *
+ * @param numbers array of numbers
+ *
+ * @return array containing modes or modes
+ *
+ */
 function mode(numbers) {
     let modes = [],
         count = [],
