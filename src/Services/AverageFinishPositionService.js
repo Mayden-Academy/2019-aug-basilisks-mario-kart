@@ -2,12 +2,14 @@ function averageFinishPosition(results, trackName) {
     let userNumber = results.length;
     let trackResults = [trackName];
     for (let i = 0; i < userNumber; i++) {
-        let userTrackResult = [results[i].name];
-        let resultArr = results[i].tracks[trackName];
-        let finalMode = mode(resultArr)[0];
-        userTrackResult.push(finalMode);
-        trackResults.push(userTrackResult)
+        if (results[i].tracks[trackName].length > 0) {
+            let userTrackResult = [results[i].name];
+            let resultArr = results[i].tracks[trackName];
+            let finalMode = mode(resultArr)[0];
+            userTrackResult.push(finalMode);
+            trackResults.push(userTrackResult);
         }
+    }
 return trackResults;
 }
 
