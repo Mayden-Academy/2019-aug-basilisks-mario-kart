@@ -96,7 +96,17 @@ function addTrack(req, res) {
     }
 }
 
+function getUserDataByTrack(req, res) {
+    let id = ObjectId(req.params.id);
+    DbService.connectToDB((db) => {
+        UserService.getUserDataByTrack(db, id, (documents) => {
+            res.json(documents)
+        })
+    })
+}
+
 module.exports.addTrack = addTrack;
 module.exports.addUser = addUser;
 module.exports.getAllUsers = getAllUsers;
 module.exports.getUserById = getUserById;
+module.exports.getUserDataByTrack = getUserDataByTrack;

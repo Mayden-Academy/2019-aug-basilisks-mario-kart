@@ -59,7 +59,17 @@ getUserById = (db, id, callback) => {
     })
 };
 
+
+getUserDataByTrack = (db, id, callback) => {
+    db.collection("mario-kart-users").findOne({[]}, (err, documents) => {
+        if (err)
+            throw err;
+        callback(documents);
+    })
+};
+
 module.exports.addUser = addUser;
 module.exports.addTrack = addTrack;
 module.exports.getUsers = getUsers;
 module.exports.getUserById = getUserById;
+module.exports.getUserDataByTrack = getUserDataByTrack;
