@@ -7,6 +7,14 @@ charcterArray = ['Baby Mario', 'Baby Peach', 'Toad',
     'Mii', 'Rosalina', 'Toadette'
 ];
 
+trackArray = ['luigiCircuit', 'mooMooMeadows', 'mushroomGorge', 'toadsFactory',
+    'marioCircuit', 'coconutMall', 'dkPass', 'wariosGoldMine', 'daisyCircuit',
+    'koopaCape', 'mapleTreeway', 'grumbleVolcano', 'dryDryRuins', 'moonviewHighway',
+    'bowsersCastle', 'rainbowRoad', 'peachBeach', 'yoshiFalls', 'ghostValley2',
+    'marioRaceway', 'sherbetLand', 'shyGuyBeach', 'delfinoSquare', 'waluigiStadium',
+    'desertHills', 'bowserCastle3', 'dksJungleParkway', 'marioCircuit',
+    'marioCircuit3', 'peachGardens', 'dkMountain', 'bowsersCastle'];
+
 /**
  * Takes a string and removes any character that is not a letter
  *
@@ -17,6 +25,10 @@ charcterArray = ['Baby Mario', 'Baby Peach', 'Toad',
  */
 function htmlEntities(str) {
     return String(str).replace(/[^a-zA-Z ]/g, '');
+}
+
+function htmlEntitiesNum(str) {
+    return String(str).replace(/[^a-zA-Z0-9 ]/g, '');
 }
 
 /**
@@ -41,4 +53,14 @@ function validateUserData (req) {
     }
 }
 
+validateTrack = (track) => {
+    track = htmlEntitiesNum(track);
+    if (trackArray.includes(track)){
+        return track
+    }
+};
+
 module.exports.validateUserData = validateUserData;
+module.exports.validateTrack = validateTrack;
+
+
