@@ -11,8 +11,9 @@
  */
 addUser = (db, newUser, callback) => {
     db.collection('mario-kart-users').insertOne(newUser, (err, result) => {
-        if (err)
+        if (err) {
             throw err;
+        }
         callback(result);
     });
 };
@@ -27,8 +28,9 @@ addUser = (db, newUser, callback) => {
  */
 getUsers = (db, callback) => {
     db.collection('mario-kart-users').find().toArray((err, documents) => {
-        if (err)
+        if (err) {
             throw err;
+        }
         callback(documents)
     })
 };
@@ -45,12 +47,25 @@ getUsers = (db, callback) => {
  */
 getUserById = (db, id, callback) => {
     db.collection("mario-kart-users").findOne({"_id": id}, (err, documents) => {
-        if (err)
+        if (err) {
             throw err;
+        }
+            
         callback(documents);
+    })
+};
+
+getUserResults = (db, name, callback) => {
+    db.collection('mario-kart-users').findOne({'name': name}, {tracks: 1}, (err, document) => {
+        if(err) {
+            throw err;
+        }
+
+        callback(document);
     })
 };
 
 module.exports.addUser = addUser;
 module.exports.getUsers = getUsers;
 module.exports.getUserById = getUserById;
+module.exports.getUserResults = getUserResults;
