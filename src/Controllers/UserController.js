@@ -128,6 +128,7 @@ function addRaceResult(req, res) {
     }
 }
 
+
 module.exports.addUser = addUser;
 module.exports.getAllUsers = getAllUsers;
 module.exports.getUserById = getUserById;

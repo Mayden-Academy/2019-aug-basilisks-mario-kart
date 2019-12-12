@@ -72,6 +72,7 @@ getUserById = (db, id, callback) => {
     })
 };
 
+
 getUserResults = (db, name, callback) => {
     db.collection('mario-kart-users').findOne({'name': name}, {'name': 1, 'tracks': 1}, (err, document) => {
         if(err) {
@@ -81,6 +82,7 @@ getUserResults = (db, name, callback) => {
         callback(document);
     })
 };
+
 
 module.exports.addUser = addUser;
 module.exports.addRaceResult = addRaceResult;
