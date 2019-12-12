@@ -31,9 +31,9 @@ function routes(app) {
         res.send('Here are the track results');
     });
 
-    app.get('api/results/:userName', jsonParser, UserController.getUserResults, (req, res) => {
-        res.send(`Here are the results for user: ${res.params.userName}`)
-    })
+    app.get('/api/results/:user', jsonParser, UserController.getUserResults, (req, res) => {
+        res.send(`Here are the results for user: ${res.params.userName}`).end()
+    });
 }
 
 module.exports = routes;

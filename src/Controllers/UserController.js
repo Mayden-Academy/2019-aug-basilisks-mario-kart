@@ -77,16 +77,21 @@ function getUserById(req, res) {
 
 
 function getUserResults(req, res) {
-    let name = req.params.userName;
+    let name = req.params.user;
+    console.log(name)
     DbService.connectToDB((db) => {
         UserService.getUserResults(db, name, (document) => {
             if (document) {
                 let trackModes = []
-            
-                document.tracks.foreach((track) => {
-                    trackModes.push(avg.mode(track))
+
+                console.log(document)
+
+                Object.keys(document.tracks).forEach((track) => {
+                    trackModes.push(avg.mode(document.tracks[track])[0])
                 })
 
+                console.log(trackModes)
+            
                 document.modalPostion = avg.mode(trackModes)
 
                 res.json({success: true, msg: 'Got results for the user', data: document})
@@ -131,4 +136,3 @@ module.exports.addRaceResult = addRaceResult;
 module.exports.addUser = addUser;
 module.exports.getAllUsers = getAllUsers;
 module.exports.getUserById = getUserById;
-module.exports.getUserDataByTrack = getUserDataByTrack;
