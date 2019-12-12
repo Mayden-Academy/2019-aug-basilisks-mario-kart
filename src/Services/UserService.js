@@ -16,11 +16,6 @@ addUser = (db, newUser, callback) => {
         callback(result);
     });
 };
-  getTrackResults = (db, callback) => {
-    db.collection('mario-kart-users').collection.find(trackName).toArray(function (err, documents) {
-        callback(results)
-    })
-};
 
 /**
  * Gets all users from db collection 'mario-kart-users'
@@ -59,4 +54,3 @@ getUserById = (db, id, callback) => {
 module.exports.addUser = addUser;
 module.exports.getUsers = getUsers;
 module.exports.getUserById = getUserById;
-module.exports.getTrackResults = getTrackResults;
