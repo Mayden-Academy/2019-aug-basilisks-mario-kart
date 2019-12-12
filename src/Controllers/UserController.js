@@ -2,6 +2,7 @@ const UserService = require('../Services/UserService');
 const DbService = require('../Services/DbService');
 const ObjectId = require('mongodb').ObjectId;
 const validation = require ('../Services/ValidationService');
+const avg = require('../Services/AverageFinishPositionService')
 
 /**
  * Uses HTTP request and response to add a new user to the db and returns with json success or failure messages
@@ -75,6 +76,30 @@ function getUserById(req, res) {
 }
 
 
+function getUserResults(req, res) {
+    let name = req.params.user;
+    console.log(name)
+    DbService.connectToDB((db) => {
+        UserService.getUserResults(db, name, (document) => {
+            if (document) {
+                let trackModes = []
+
+                Object.keys(document.tracks).forEach((track) => {
+                    trackModes.push(avg.mode(document.tracks[track])[0])
+                })
+            
+                document.modalPostion = avg.mode(trackModes)
+
+                res.json({success: true, msg: 'Got results for the user', data: document})
+            } else {
+                res.json({success: false, msg: 'Database error', data: null})
+            }
+        })
+    })
+}
+
+
+
 function addRaceResult(req, res) {
     let name = req.params.name;
     let trackResult = validation.validateTracksData(req);
@@ -100,6 +125,10 @@ function addRaceResult(req, res) {
 }
 
 
+module.exports.addUser = addUser;
+module.exports.getAllUsers = getAllUsers;
+module.exports.getUserById = getUserById;
+module.exports.getUserResults = getUserResults;
 module.exports.addRaceResult = addRaceResult;
 module.exports.addUser = addUser;
 module.exports.getAllUsers = getAllUsers;

@@ -41,3 +41,4 @@ function mode(numbers) {
 }
 
 module.exports.averageFinishPosition = averageFinishPosition;
+module.exports.mode = mode;
