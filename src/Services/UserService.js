@@ -68,6 +68,7 @@ getUserById = (db, id, callback) => {
     })
 };
 
+
 module.exports.addUser = addUser;
 module.exports.addRaceResult = addRaceResult;
 module.exports.getUsers = getUsers;

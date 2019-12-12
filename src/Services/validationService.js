@@ -13,7 +13,10 @@ trackArray = ['luigiCircuit', 'mooMooMeadows', 'mushroomGorge', 'toadsFactory',
     'bowsersCastle', 'rainbowRoad', 'peachBeach', 'yoshiFalls', 'ghostValley2',
     'marioRaceway', 'sherbetLand', 'shyGuyBeach', 'delfinoSquare', 'waluigiStadium',
     'desertHills', 'bowserCastle3', 'dksJungleParkway', 'marioCircuit',
-    'marioCircuit3', 'peachGardens', 'dkMountain', 'bowsersCastle'];
+    'marioCircuit3', 'peachGardens', 'dkMountain', 'bowsersCastle'
+];
+
+positionArray = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]
 
 /**
  * Takes a string and removes any character that is not a letter
@@ -39,12 +42,23 @@ function htmlEntitiesNum(str) {
     return String(str).replace(/[^a-zA-Z0-9 ]/g, '');
 }
 
+function validateTracksData(req) {
+    let track = htmlEntitiesNum(req.body.trackName);
+    let position = req.body.finishPosition;
+    if (trackArray.includes(track) && positionArray.includes(position)) {
+        return {
+            trackName: track,
+            finishPosition: position
+        }
+    }
+}
+
 /**
  * Takes a http request and validates and sanitises data from body. Returns validated object of user data
  *
  * @param req HTTP Request
  *
- * @return object of validated user data
+ * @return object of validated user data with object of all tracks for results
  *
  */
 function validateUserData (req) {
@@ -56,7 +70,14 @@ function validateUserData (req) {
             name: usersName,
             favRacer: character,
             cohort: userCohort,
-        tracks: {}
+        tracks: {'luigiCircuit' : [], 'mooMooMeadows': [], 'mushroomGorge': [], 'toadsFactory': [],
+            'marioCircuit': [], 'coconutMall': [], 'dkPass': [], 'wariosGoldMine': [], 'daisyCircuit': [],
+            'koopaCape': [], 'mapleTreeway': [], 'grumbleVolcano': [], 'dryDryRuins': [], 'moonviewHighway': [],
+            'bowsersCastle': [], 'rainbowRoad': [], 'peachBeach': [], 'yoshiFalls': [], 'ghostValley2': [],
+            'marioRaceway': [], 'sherbetLand': [], 'shyGuyBeach': [], 'delfinoSquare': [], 'waluigiStadium': [],
+            'desertHills': [], 'bowserCastle3': [], 'dksJungleParkway': [], 'marioCircuit': [],
+            'marioCircuit3': [], 'peachGardens': [], 'dkMountain': [], 'bowsersCastle': []
+            }
         }
     }
 }
@@ -78,5 +99,4 @@ validateTrack = (track) => {
 
 module.exports.validateUserData = validateUserData;
 module.exports.validateTrack = validateTrack;
-
-
+module.exports.validateTracksData = validateTracksData;
