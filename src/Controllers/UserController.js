@@ -84,13 +84,9 @@ function getUserResults(req, res) {
             if (document) {
                 let trackModes = []
 
-                console.log(document)
-
                 Object.keys(document.tracks).forEach((track) => {
                     trackModes.push(avg.mode(document.tracks[track])[0])
                 })
-
-                console.log(trackModes)
             
                 document.modalPostion = avg.mode(trackModes)
 
