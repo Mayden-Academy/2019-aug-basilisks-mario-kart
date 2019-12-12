@@ -48,7 +48,6 @@ function htmlEntitiesNum(str) {
  *
  */
 function validateUserData (req) {
-
     let usersName = htmlEntities(req.body.name);
     let character = htmlEntities(req.body.favRacer);
     let userCohort = htmlEntities(req.body.cohort);
