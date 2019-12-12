@@ -80,7 +80,23 @@ function getUserResults(req, res) {
     let name = req.params.userName;
     DbService.connectToDB((db) => {
         UserService.getUserResults(db, name, (document) => {
-            res.json(document)
+            if (document) {
+                let trackModes = []
+            
+                document.tracks.foreach((track) => {
+                    trackModes.push(avg.mode(track))
+                })
+
+                document.modalPostion = avg.mode(trackModes)
+
+                res.json({success: true, msg: 'Got results for the user', data: document})
+            } else {
+                res.json({success: false, msg: 'Database error', data: null})
+            }
+        })
+    })
+}
+
 
 
 function addRaceResult(req, res) {
@@ -107,29 +123,6 @@ function addRaceResult(req, res) {
     }
 }
 
-function getUserDataByTrack(req, res) {
-    let id = ObjectId(req.params.id);
-    DbService.connectToDB((db) => {
-        UserService.getUserDataByTrack(db, id, (documents) => {
-            if (document) {
-                let trackModes = []
-            
-                document.tracks.foreach((track) => {
-                    trackModes.push(avg.mode(track))
-                })
-
-                document.modalPostion = avg.mode(trackModes)
-
-                res.json({success: true, msg: 'Got results for users', data: documents})
-            } else {
-                res.json({success: false, msg: 'Database error', data: null})
-            }
-            
-        })
-    })
-}
-
-
 module.exports.addUser = addUser;
 module.exports.getAllUsers = getAllUsers;
 module.exports.getUserById = getUserById;
@@ -139,4 +132,3 @@ module.exports.addUser = addUser;
 module.exports.getAllUsers = getAllUsers;
 module.exports.getUserById = getUserById;
 module.exports.getUserDataByTrack = getUserDataByTrack;
-
