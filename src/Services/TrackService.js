@@ -1,7 +1,6 @@
 getTrackResults = (db, trackName, callback ) => {
-
-    let collection = db.collection('mario-kart-tracks')
-    collection.find({trackname: trackName}).toArray(function  (err, documents) {
+    let collection = db.collection('mario-kart-users')
+    collection.find({tracks: {$exists: trackName}}).toArray(function  (err, documents) {
         callback(documents)
     })
 }
