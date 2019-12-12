@@ -18,7 +18,6 @@ function addUser(req, res) {
     if (newUser) {
         DbService.connectToDB(((db) => {
             UserService.addUser(db, newUser, (result) => {
-                console.log(result);
                 if (result.insertedCount) {
                     res.json({
                         success: true,
@@ -75,6 +74,42 @@ function getUserById(req, res) {
     })
 }
 
+
+function addRaceResult(req, res) {
+    let name = req.params.name;
+    let trackResult = validation.validateTracksData(req);
+    if (trackResult) {
+        DbService.connectToDB(((db) => {
+            UserService.addRaceResult(db, name, trackResult, (result) => {
+                if (result) {
+                    if (result.modifiedCount === 1) {
+                        res.json({success: true, msg: 'Added new race results.', data: trackResult})
+                    }
+                } else {
+                    res.json({success: false, msg: 'result missing', data: result})
+                }
+            })
+        }))
+    } else {
+        res.json({
+            success: false,
+            msg: 'Track results not added to db. Ensure track name,user name and position contains only letters and spaces. Track name should have a capital first letter and position needs to be between 1-12.',
+            data: trackResult
+        })
+    }
+}
+
+function getUserDataByTrack(req, res) {
+    let id = ObjectId(req.params.id);
+    DbService.connectToDB((db) => {
+        UserService.getUserDataByTrack(db, id, (documents) => {
+            res.json(documents)
+        })
+    })
+}
+
+module.exports.addRaceResult = addRaceResult;
 module.exports.addUser = addUser;
 module.exports.getAllUsers = getAllUsers;
 module.exports.getUserById = getUserById;
+module.exports.getUserDataByTrack = getUserDataByTrack;

@@ -1,7 +1,7 @@
 const MongoClient = require('mongodb').MongoClient;
 const url = 'mongodb://localhost:27017';
 const dbname = 'mario-kart';
-const Client = new MongoClient(url, {useNewUrlParser: true, useUnifiedTopology: true });
+const Client = new MongoClient(url, {useNewUrlParser: true, useUnifiedTopology: true});
 
 /**
  * Creates db connection. Throws error if connection fails.

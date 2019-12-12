@@ -22,6 +22,11 @@ function routes(app) {
         res.send('Here is a specific user')
     });
 
+    app.put('/api/user/:name', jsonParser, UserController.addRaceResult, (req, res) => {
+        res.send('Creating a race result');
+    });
+
+
     app.get('/api/track/:track', jsonParser, TrackController.getTrackResults, (req, res) => {
         res.send('Here are the track results');
     });
