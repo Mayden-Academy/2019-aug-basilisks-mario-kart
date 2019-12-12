@@ -110,7 +110,12 @@ function getUserDataByTrack(req, res) {
     let id = ObjectId(req.params.id);
     DbService.connectToDB((db) => {
         UserService.getUserDataByTrack(db, id, (documents) => {
-            res.json(documents)
+            if (document) {
+                res.json({success: true, msg: 'Got results for users', data: documents})
+            } else {
+                res.json({success: false, msg: 'Database error', data: null})
+            }
+            
         })
     })
 }
