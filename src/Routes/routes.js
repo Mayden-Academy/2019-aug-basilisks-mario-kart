@@ -14,17 +14,17 @@ function routes(app) {
         res.send('Creating new user');
     });
 
-    app.get('/api/track/:name', jsonParser, TrackController.getTrackResults, (req, res) => {
-        res.send('Here are the track results');
-    });
-
     app.get('/api/user', jsonParser, UserController.getAllUsers, (req, res) => {
         res.send('Here are all the users')
     });
 
     app.get('/api/user/:id', jsonParser, UserController.getUserById, (req, res) => {
         res.send('Here is a specific user')
-    })
+    });
+
+    app.get('/api/track/:track', jsonParser, TrackController.getTrackResults, (req, res) => {
+        res.send('Here are the track results');
+    });
 }
 
 module.exports = routes;
