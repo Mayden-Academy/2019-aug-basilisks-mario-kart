@@ -2,6 +2,7 @@ const UserService = require('../Services/UserService');
 const DbService = require('../Services/DbService');
 const ObjectId = require('mongodb').ObjectId;
 const validation = require ('../Services/ValidationService');
+const avg = require('../Services/AverageFinishPositionService')
 
 /**
  * Uses HTTP request and response to add a new user to the db and returns with json success or failure messages
@@ -111,6 +112,14 @@ function getUserDataByTrack(req, res) {
     DbService.connectToDB((db) => {
         UserService.getUserDataByTrack(db, id, (documents) => {
             if (document) {
+                let trackModes = []
+            
+                document.tracks.foreach((track) => {
+                    trackModes.push(avg.mode(track))
+                })
+
+                document.modalPostion = avg.mode(trackModes)
+
                 res.json({success: true, msg: 'Got results for users', data: documents})
             } else {
                 res.json({success: false, msg: 'Database error', data: null})
