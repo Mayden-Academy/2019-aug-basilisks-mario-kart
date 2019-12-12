@@ -1,6 +1,6 @@
 const TrackService = require('../Services/TrackService');
 const DbService = require('../Services/DbService');
-const validation = require('../validation');
+const validation = require('../Services/validationService');
 const averageFinishPositionService = require('../Services/AverageFinishPositionService');
 
 /**
